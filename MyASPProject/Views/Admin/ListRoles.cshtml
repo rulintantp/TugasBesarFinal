@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+
+@{
+    ViewData["Title"] = "List Roles";
+}
+
+<h1 class="mt-4">Daftar Role</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">Daftar Role</li>
+</ol>
+
+@if (Model.Any())
+{
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="col-md-6">
+                <a class="btn btn-primary mb-3" style="width:auto" asp-action="CreateRole" asp-controller="Admin">Add New Role</a>
+
+                <table class="table table-striped">
+                    <tr>
+                        <th>Role Name</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                    @foreach (var role in Model)
+                    {
+                        <tr>
+                            <td>@role.Name</td>
+                            <td><a class="btn btn-warning btn-sm" asp-action="EditRole" asp-route-id="@role.Id">edit</a></td>
+                            <td><a class="btn btn-danger btn-sm" asp-action="DeleteRole" asp-route-id="@role.Id">delete</a></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card col-md-4">
+        <div class="card-header">
+            Belum ada role
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+                Klik tombol dibawah ini untuk membuat role baru
+            </h5>
+            <a class="btn btn-primary" style="width:auto" asp-action="CreateRole">
+                Create Role
+            </a>
+        </div>
+    </div>
+}

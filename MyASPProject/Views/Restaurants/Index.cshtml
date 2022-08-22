@@ -1,0 +1,51 @@
+﻿@model MyASPProject.ViewModels.RestaurantViewModel
+@{
+    ViewData["Title"] = "List Of Restaurant";
+}
+
+<h1 class="mt-4">List Of Restaurant</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">Daftar Restaurant</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-12">
+            <a asp-action="Create">Add New Restaurant</a>
+        </div>
+        <div class="col-md-6">
+            @if (ViewData["pesan"] != null)
+            {
+                @Html.Raw(ViewData["pesan"])
+            }
+            <table class="table table-striped">
+                <tr>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Cuisine</td>
+                    <td>&nbsp;</td>
+                </tr>
+                @foreach (var item in Model.Restaurants)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Name</td>
+                        <partial name="_Summary" model="item" />
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-md-6">
+            <address>
+                <strong>Support: </strong><email mail-to="info">Info</email>
+                <stong>Marketing: </stong><email mail-to="marketing">Marketing</email>
+            </address>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <span>Username: @Model.Username </span>
+    </div>
+</div>

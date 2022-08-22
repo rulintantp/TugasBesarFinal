@@ -1,0 +1,44 @@
+﻿@model MyASPProject.Models.Enrollment //declare model yang utk digunakan sebagai parameter di controller 
+@{
+    ViewData["Title"] = "Create New Enrollment"; //Nama tab
+}
+
+<h1 class="mt-4">Create New Enrollment</h1>       <!-- JUDUL PAGE -->
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>    <!-- Link untuk kembali ke home/index -->
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-6">
+            <form asp-action="Create"> <!-- metodh yang akan dipanggil ketika mengklik submit -->   
+                <div class="mb-2">
+                    <!-- Form untuk student ID -->
+                    <label asp-for="StudentID" class="form-label">StudentID :</label>      
+                    <input asp-for="StudentID" class="form-control" placeholder="Enter StudentID" />
+                    <span asp-validation-for="StudentID" class="text-danger" />
+                </div>
+                <div class="mb-3 mt-3">
+                    <!-- Form untuk course ID -->
+                    <label asp-for="CourseID" class="form-label">CourseID :</label>    
+                    <input asp-for="CourseID" class="form-control" placeholder="Enter CourseID" />
+                    <span asp-validation-for="CourseID" class="text-danger" />
+                </div>
+                   <div class="mb-3">
+                    <label asp-for="Grade" class="form-label">Grade Type :</label>
+                    <select asp-for="Grade" asp-items="@Html.GetEnumSelectList<Grade>()" class="form-control">
+                    </select>
+                    <span asp-validation-for="Grade" class="text-danger" />
+                </div>
+                <input type="submit" value="Create" class="btn btn-primary" /> <!-- tombol submit -->
+                
+            </form>
+            
+        </div>
+        <h10 class="mt-4">Note : Student ID dan Course ID bisa dilihat pada menu List Student dan List Course</h10>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

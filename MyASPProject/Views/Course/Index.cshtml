@@ -1,0 +1,84 @@
+﻿@model IEnumerable<MyASPProject.Models.Course> //declare model yang di return dari controller 
+@{
+
+}
+
+@{
+    ViewData["Title"] = "GetAllCourse";
+
+ <!-- MEMASUKAN DATA TOTALPAGE PADA ITEM PERTAMA PADA VARIABEL  -->
+    int totalPage = 0;
+}
+@foreach (var item in Model) {
+    totalPage = (int)item.TotalPage;
+    break; <!-- UNTUK MEMBERHENTIKAN PADA SAAT LOOPINGAN PERTAMA BERHASIL -->
+    
+}
+
+<h1>Daftar Course</h1>  <!-- JUDUL PAGE -->
+<div>
+    @if (ViewData["pesan"] != null)  /* UNTUK MENAMPILKAN PESAN SETELAH ACTION */
+    {
+        @Html.Raw(ViewData["pesan"])
+    }
+</div>
+<p>
+    <a asp-action="Create">Create New</a>   <!-- LINK UNTUK KE MENU CREATE -->
+</p>
+<p>
+    <form asp-action="Index" method="get">  <!-- LINK UNTUK MENU SEARCH -->
+        Masukan Nama:
+        <input name="name" type="text" placeholder="Masukan Nama Course" />
+        <input type="submit" value="Submit"  class="btn btn-primary" />
+    </form>
+</p> 
+@if (Model.Count() == 0) 
+    {
+        <div class='alert alert-success alert-dismissible fade show'><button type='button' class='btn-close' data-bs-dismiss='alert'></button> Data tidak ditemumkan</div>
+    }
+  else 
+    {
+    <table class="table">   <!-- BATAS AWAL TABLE -->
+    <thead>   <!-- BATAS AWAL HEADER TABLE -->
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CourseID) <!-- JUDUL ROW 1  -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title) <!-- JUDUL ROW 1  -->
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Credits) <!-- JUDUL ROW 2  -->
+            </th>
+            <th></th>   <!-- ROW 3 TANPA JUDUL  -->
+        </tr>
+    </thead> <!-- BATAS AKHIR HEADER TABLE -->
+    <tbody> <!-- BATAS AWAL BODY TABLE -->
+    @foreach (var item in Model) {      <!-- LOOPING DATA COURSE -->                      
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CourseID)  <!-- MENAMPILKAN DATA TITLE -->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)  <!-- MENAMPILKAN DATA TITLE -->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Credits)  <!-- MENAMPILKAN DATA CREDITS -->
+            </td>
+                <td>
+                    <a class="btn btn-warning btn-sm" asp-action="Update" asp-route-id="@item.CourseID">Update</a>
+                    <a class="btn btn-info btn-sm" asp-action="Detail" asp-route-id="@item.CourseID">Detail</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.CourseID">Delete</a>
+            </td>
+        </tr>
+    }
+
+    </tbody>  <!-- BATAS AKHIR BODY TABLE -->
+    </table>   <!-- BATAS AKHIR TABLE  -->
+
+    }
+<!--LOOPING PAGE NUMBER -->
+@for(var i = 1; i <= totalPage; i++) {  
+                       <!-- CONTROLLER -->   <!-- NAMA METHOD  -->     <!-- PARAMETER -->     
+                    <a asp-controller="Course" asp-action="Index" asp-route-pageNumber=@i>@i</a>
+            }               

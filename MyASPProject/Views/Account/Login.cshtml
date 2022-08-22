@@ -1,0 +1,46 @@
+﻿@model MyASPProject.ViewModels.LoginViewModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1 class="mt-4">Login</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">Login</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-6">
+            <form asp-action="Login">
+                <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl" />
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="mb-3 mt-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger" />
+                </div>
+                <div class="mb-3 form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="RememberMe" />
+                        @Html.DisplayNameFor(model=>model.RememberMe)
+                    </label>
+                   
+                </div>
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial"); 
+    }
+}

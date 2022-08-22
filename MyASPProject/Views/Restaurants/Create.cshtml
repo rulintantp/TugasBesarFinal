@@ -1,0 +1,35 @@
+﻿@model MyASPProject.ViewModels.RestaurantEditViewModel
+@{
+    ViewData["Title"] = "Create New Restaurant";
+}
+
+<h1 class="mt-4">Create New Restaurant</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">Daftar Restaurant</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div class="mb-3 mt-3">
+                    <label asp-for="Name" class="form-label">Restaurant Name :</label>
+                    <input asp-for="Name" class="form-control" placeholder="enter restaurant name" />
+                    <span asp-validation-for="Name" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Cuisine" class="form-label">Cuisine Type :</label>
+                    <select asp-for="Cuisine" asp-items="@Html.GetEnumSelectList<CuisineType>()" class="form-control">
+                    </select>
+                    <span asp-validation-for="Cuisine" class="text-danger" />
+                </div>
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

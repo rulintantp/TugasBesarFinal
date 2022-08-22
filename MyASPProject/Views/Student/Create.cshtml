@@ -1,0 +1,35 @@
+﻿@model MyASPProject.Models.Student //declare model yang utk digunakan sebagai parameter di controller 
+@{
+    ViewData["Title"] = "Create New Student"; //Nama tab
+}
+
+<h1 class="mt-4">Create New Student</h1>       <!-- JUDUL PAGE -->
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>    <!-- Link untuk kembali ke home/index -->
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-6">
+            <form asp-action="Create"> <!-- metodh yang akan dipanggil ketika mengklik submit -->
+                <div class="mb-3 mt-3">
+                    <!-- property title -->
+                    <label asp-for="FirstMidName" class="form-label">FirstMidName :</label>    
+                    <input asp-for="FirstMidName" class="form-control" placeholder="enter FirstMidName" />
+                    <span asp-validation-for="FirstMidName" class="text-danger" />
+                </div>
+                <div class="mb-3">
+                    <!-- property credits -->
+                    <label asp-for="LastName" class="form-label">LastName :</label>      
+                    <input asp-for="LastName" class="form-control" placeholder="enter LastName" />
+                    <span asp-validation-for="LastName" class="text-danger" />
+                </div>
+                <input type="submit" value="Create" class="btn btn-primary" /> <!-- tombol submit -->
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

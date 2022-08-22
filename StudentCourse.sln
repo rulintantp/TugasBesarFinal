@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyASPProject", "MyASPProject\MyASPProject.csproj", "{5849A3D1-C32C-4B36-9DAF-10DE06CE3B45}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyIdentityProvider", "MyIdentityProvider\MyIdentityProvider.csproj", "{AE06B1DA-C894-4BAD-ADFB-5E8F956212B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5849A3D1-C32C-4B36-9DAF-10DE06CE3B45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5849A3D1-C32C-4B36-9DAF-10DE06CE3B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5849A3D1-C32C-4B36-9DAF-10DE06CE3B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5849A3D1-C32C-4B36-9DAF-10DE06CE3B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE06B1DA-C894-4BAD-ADFB-5E8F956212B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE06B1DA-C894-4BAD-ADFB-5E8F956212B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE06B1DA-C894-4BAD-ADFB-5E8F956212B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE06B1DA-C894-4BAD-ADFB-5E8F956212B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DA64AEBC-8409-49A7-B2DF-B6EBCCFED84C}
+	EndGlobalSection
+EndGlobal

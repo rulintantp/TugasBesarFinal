@@ -1,0 +1,53 @@
+﻿@model MyASPProject.Models.Student
+
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+
+<h1 class="mt-4">Update Student</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+    <li class="breadcrumb-item active">Daftar Student</li>
+</ol>
+
+
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="col-md-6">
+            <form asp-action="Update">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3 mt-3">
+                    <label asp-for="ID" class="form-label"></label>
+                    <input asp-for="ID" class="form-control" readonly="readonly" />
+                    <span asp-validation-for="ID" class="text-danger"></span>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label asp-for="FirstMidName" class="form-label"></label>
+                    <input asp-for="FirstMidName" class="form-control" />
+                    <span asp-validation-for="FirstMidName" class="text-danger"></span>
+                </div>
+                 <div class="mb-3 mt-3">
+                    <label asp-for="LastName" class="form-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

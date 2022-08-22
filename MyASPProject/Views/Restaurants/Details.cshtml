@@ -1,0 +1,16 @@
+﻿@model MyASPProject.Models.Restaurant
+@{
+    ViewData["Title"] = "Detail Restaurant";
+}
+
+<h1 class="mt-4">List Of Restaurant</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item"><a asp-controller="Restaurants" asp-action="Index">List of Restaurant</a></li>
+    <li class="breadcrumb-item active">Detail Restaurant</li>
+</ol>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <span>@Model.Id - @Model.Name</span>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h1 class="mt-4">Home Page</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item">Home Page</li>
+</ol>
+<div class="card mb-4">
+    <div class="card-body">
+        <p class="mb-0">
+           Selamat datang di daftar restaurant terlengkap di indonesia <br/>
+           Username: @User.Identity.Name
+           <h2>View Component</h2>
+           @await Component.InvokeAsync("Hello")
+        </p>
+    </div>
+</div>
